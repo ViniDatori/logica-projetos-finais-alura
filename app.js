@@ -22,38 +22,43 @@ function sortear() {
         alert("A quantidade de números sorteados não pode ser maior que o intervalo máximo definido.");
         limparCampos();
     } else {
-        // Estrutura de repetição que sorteia a quantidade de números definida pelo usuário sem repetir o mesmo número na mesma rodada:
-        while (qtdDeNumero != 0) {
+        if(qtdDeNumero > 20) {
+            alert("A quantidade de números sorteados não pode ser maior que 20.")
+            limparCampos();
+        } else {
+            // Estrutura de repetição que sorteia a quantidade de números definida pelo usuário sem repetir o mesmo número na mesma rodada:
+            while (qtdDeNumero != 0) {
 
-            intMin = Math.ceil(intMin);
-            intMax = Math.floor(intMax);
-            let numeroSorteado = Math.floor(Math.random() * (intMax - intMin + 1) + intMin);
-
-            if (numSorteados.includes(numeroSorteado)) {
-
-                numeroSorteado = "";
                 intMin = Math.ceil(intMin);
                 intMax = Math.floor(intMax);
-                numeroSorteado = Math.floor(Math.random() * (intMax - intMin + 1) + intMin);
+                let numeroSorteado = Math.floor(Math.random() * (intMax - intMin + 1) + intMin);
 
-            } else {
-                numSorteados.push(numeroSorteado);
-                qtdDeNumero--;
+                if (numSorteados.includes(numeroSorteado)) {
+
+                    numeroSorteado = "";
+                    intMin = Math.ceil(intMin);
+                    intMax = Math.floor(intMax);
+                    numeroSorteado = Math.floor(Math.random() * (intMax - intMin + 1) + intMin);
+
+                } else {
+                    numSorteados.push(numeroSorteado);
+                    qtdDeNumero--;
+                }
             }
+
+            // Manipulação de texto que mostra ao usuário os números sorteados:
+            resultadoSorteio("#resultado", "Números sorteados: " + numSorteados);
+
+            // Manipulação do Botão Reiniciar:
+            botaoReiniciar = document.getElementById("btn-reiniciar");
+            botaoReiniciar.style.cursor = "pointer";
+            botaoReiniciar = document.getElementById("btn-reiniciar").removeAttribute("disabled");
+
+            // Manipulação do Botão Sortear:
+            botaoSortear = document.getElementById("btn-sortear");
+            botaoSortear.style.cursor = "not-allowed";
+            botaoSortear = document.getElementById("btn-sortear").setAttribute("disabled", true);
         }
-
-        // Manipulação de texto que mostra ao usuário os números sorteados:
-        resultadoSorteio("#resultado", "Números sorteados: " + numSorteados);
-
-        // Manipulação do Botão Reiniciar:
-        botaoReiniciar = document.getElementById("btn-reiniciar");
-        botaoReiniciar.style.cursor = "pointer";
-        botaoReiniciar = document.getElementById("btn-reiniciar").removeAttribute("disabled");
-
-        // Manipulação do Botão Sortear:
-        botaoSortear = document.getElementById("btn-sortear");
-        botaoSortear.style.cursor = "not-allowed";
-        botaoSortear = document.getElementById("btn-sortear").setAttribute("disabled", true);
     }
 }
 
