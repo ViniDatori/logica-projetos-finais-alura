@@ -9,9 +9,13 @@ let botaoReiniciar;
 function sortear() {
 
     // Declaração de variáveis cujos valores serão fornecidos pelo usuário:
-    let qtdDeNumero = document.querySelector("#input1").value;
-    let intMin = document.querySelector("#input2").value;
-    let intMax = document.querySelector("#input3").value;
+    let inputQtd = document.querySelector("#input1");
+    let inputMin = document.querySelector("#input2");
+    let inputMax = document.querySelector("#input3");
+    
+    let qtdDeNumero = parseInt(inputQtd.value);
+    let intMin = parseInt(inputMin.value);
+    let intMax = parseInt(inputMax.value);
     
     // Para evitar bugs:
     if(qtdDeNumero > intMax) {
