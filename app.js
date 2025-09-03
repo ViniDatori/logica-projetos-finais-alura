@@ -16,6 +16,7 @@ function sortear() {
     // Para evitar bugs:
     if(qtdDeNumero > intMax) {
         alert("A quantidade de números sorteados não pode ser maior que o intervalo máximo definido.");
+        limparCampos();
     } else {
         // Estrutura de repetição que sorteia a quantidade de números definida pelo usuário sem repetir o mesmo número na mesma rodada:
         while (qtdDeNumero != 0) {
